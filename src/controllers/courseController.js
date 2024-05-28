@@ -1,3 +1,6 @@
+const { getErrorMessage } = require('../utils/errorHelper');
+const courseManager = require('../managers/courseManager');
+
 const router = require('express').Router();
 
 
@@ -13,8 +16,9 @@ router.post('/create',async (req,res) =>{
 
     try {
         await courseManager.create(courseData);
-    } catch (error) {
-        res.render('courses/create');
+        res.redirect('/courses')
+    } catch (err) {
+        res.render('courses/create', { error: getErrorMessage(err) });
     }
 });
 
