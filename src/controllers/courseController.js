@@ -4,8 +4,9 @@ const courseManager = require('../managers/courseManager');
 const router = require('express').Router();
 
 
-router.get('/', (req,res) =>{
-    res.render('courses')
+router.get('/', async (req,res) =>{
+    const courses = await courseManager.getAll().lean();
+    res.render('courses' , { courses })
 })
 
 
