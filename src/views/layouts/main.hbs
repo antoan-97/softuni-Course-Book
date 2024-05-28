@@ -24,16 +24,16 @@
             <img src="./images/logo.png">
             <ul>
                 <!-- Guest users and Logged users -->
-                <li><a href="#">Home</a></li>
-                <li><a href="#">All Courses</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/courses">All Courses</a></li>
                 {{#if itsAuthenticated}}
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Create Course Offers</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="/users/profile">Profile</a></li>
+                <li><a href="/courses/create">Create Course Offers</a></li>
+                <li><a href="/users/logout">Logout</a></li>
                 {{else}}
                 <!--For guest users-->
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Register</a></li>
+                <li><a href="/users/login">Login</a></li>
+                <li><a href="/users/register">Register</a></li>
                 {{/if}}
 
                 
