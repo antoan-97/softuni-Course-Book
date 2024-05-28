@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Page</title>
+    <title>Register Page</title>
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 
@@ -39,38 +39,25 @@
         </nav>
     </div>
 
-
     <main>
-        <section id="create-container">
-            <div class="create-container-info">
-                <h1>Create Course</h1>
-                <form>
-                    <label>Title:</label>
-                    <input name="" type="text" id="title">
-
-                    <label>Type:</label>
-                    <input name="" type="text" id="type">
-
-                    <label>Certificate:</label>
-                    <input name="" type="text" id="certificate">
-
-                    <label>Image:</label>
-                    <input name="" type="text" id="image" placeholder="http://...">
-
-                    <label>Description:</label>
-                    <textarea id="content" name=""></textarea>
-
-                    <label>Price:</label>
-                    <input name="" type="number" id="price">
-
-                    <input type="submit" id="btn" value="Create">
-                </form>
-            </div>
-        </section>
+        <div class="register-box">
+            <h1>Register</h1>
+            <form action="#">
+                <label>Username</label>
+                <input type="text" placeholder="Username.." name="">
+                <label>Email</label>
+                <input type="text" placeholder="Email.." name="">
+                <label>Password</label>
+                <input type="password" placeholder="Password.." name="">
+                <label>Confirm Password</label>
+                <input type="password" placeholder="Confirm Password.." name="">
+                <input type="submit" value="Submit">
+            </form>
+            <p>Already have an account? <a href="#">Login here</a></p>
+        </div>
     </main>
 
     <footer>Back-End 2023</footer>
-
 </body>
 
 </html>

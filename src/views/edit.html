@@ -1,121 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Starts Head Section -->
 
 <head>
-    <link rel="stylesheet" href="/static/css/styles.css">
-    <link rel="icon" type="image/x-icon" href="/static/images/free-30-instagram-stories-icons23_122570.png">
-    <title>Petstagram</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Page</title>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
-
-<!-- Starts Body Section -->
 
 <body>
 
-    <!-- Starts Header Section with Navigation Bar -->
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <div class="logo">
-                    <!-- Link to Home Page -->
-                    <a href="#">
-                        <img width="50px" src="/static/images/free-30-instagram-stories-icons23_122570.png" alt="img1">
-                    </a>
+    <!-- In case of error, you should display div with class "errorContainer" -->
+    <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
 
-                    <!-- Link to Home Page -->
-                    <a class="home" href="#">
-                        <i>Petstagram</i>
-                    </a>
-                </div>
-
-                <div class="nav-links">
-                    <ul class="nav-group">
-                        <li class="nav-item">
-                            <!-- Link to Catalog Page -->
-                            <a href="#">
-                                <i>Catalog</i>
-                            </a>
-                        </li>
-
-                        <!--For Guest User-->
-                        <li class="nav-item">
-                            <!-- Link to Login Page -->
-                            <a href="#">
-                                <i>Login</i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <!-- Link to Register Page -->
-                            <a href="#">
-                                <i>Register</i>
-                            </a>
-                        </li>
-
-                        <!--For login users-->
-                        <li class="nav-item">
-                            <!-- Link to Add Photo Page -->
-                            <a href="#">
-                                <i>Add Photo</i>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <!-- Link to Profile Page -->
-                            <a href="#">
-                                <i>Profile</i>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <!-- Link to Logout Page -->
-                            <a href="#">
-                                <i>Logout</i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+    <!-- <div>
+            <div class="errorContainer">
+                <p>Error</p>
             </div>
+        </div> -->
+
+    <div class="navigation">
+        <nav>
+            <img src="./images/logo.png">
+            <ul>
+                <!-- Guest users and Logged users -->
+                <li><a href="#">Home</a></li>
+                <li><a href="#">All Courses</a></li>
+                <!--For guest users-->
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Register</a></li>
+                <!--For loggin users-->
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Create Course Offers</a></li>
+                <li><a href="#">Logout</a></li>
+
+            </ul>
         </nav>
-    </header>
+    </div>
 
-    <!-- Starts Main Section -->
+
     <main>
-        <!-- Start Add Photo Section -->
-        <div class="editPage">
-            <h2>Edit photo</h2>
-            <!-- Start Add Photo Form -->
-            <form action="">
-                <p>
-                    <input type="text" name="" placeholder="Name" value="Sal">
-                </p>
+        <section id="edit-container">
+            <div class="edit-container-info">
+                <h1>Edit Course</h1>
+                <form>
+                    <label>Title:</label>
+                    <input name="" type="text" id="title" value="Classroom Management Essentials">
 
-                <p>
-                    <input type="number" name="" placeholder="Age" value="4">
-                </p>
+                    <label>Type:</label>
+                    <input name="" type="text" id="type" value="Management">
 
-                <p>
-                    <textarea type="text" name="" placeholder="Description">This is my pet!</textarea>
-                </p>
+                    <label>Certificate:</label>
+                    <input name="" type="text" id="certificate" value="Yes">
 
-                <p>
-                    <input type="text" name="" placeholder="Location" value="Bansko, Bulgaria">
-                </p>
+                    <label>Image:</label>
+                    <input name="" type="text" id="image" placeholder="http://..." value="https://cdn.pixabay.com/photo/2020/08/09/14/25/business-5475660_1280.jpg">
 
-                <p>
-                    <input type="text" name="" placeholder="Link to image" value="/static/images/axolotl.jpeg">
-                </p>
-                <!-- Add Photo Button -->
-                <button class="edit-btn" type="submit">Edit Photo</button>
-            </form>
-        </div>
+                    <label>Description:</label>
+                    <textarea id="content" name="">Learn how to manage your classroom and spend more time teaching rather than disciplining</textarea>
+
+                    <label>Price:</label>
+                    <input name="" type="number" id="price" value="25">
+
+                    <input type="submit" id="btn" value="Edit">
+                </form>
+            </div>
+        </section>
     </main>
 
-    <!-- Start Footer Section -->
-    <div class="footer">
-        <span class="footer-section">
-            © 2023 SoftUni Back-End Exam
-        </span>
-    </div>
+    <footer>Back-End 2023</footer>
 
 </body>
 
