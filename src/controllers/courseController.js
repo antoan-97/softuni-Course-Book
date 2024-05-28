@@ -4,6 +4,11 @@ const courseManager = require('../managers/courseManager');
 const router = require('express').Router();
 
 
+router.get('/', (req,res) =>{
+    res.render('courses')
+})
+
+
 router.get('/create', (req,res) =>{
   res.render('courses/create');
 });
