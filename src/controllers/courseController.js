@@ -28,4 +28,31 @@ router.post('/create',async (req,res) =>{
     }
 });
 
+
+router.get('/:courseId/details', async (req,res) =>{
+    const courseId = req.params.courseId;
+    const { user } = req;
+    const owner = req.user?.email;
+    
+
+    const course = await courseManager.getOne(courseId).populate('signUpList', 'username').lean();
+    const isOwner = req.user?._id == course.owner?._id
+    const signedUsernames = course.signUpList.map(user => user.username).join(', ');
+    const hasSigned = course.signUpList?.some((v) => v?._id.toString() === user?._id.toString());
+    
+    res.render('courses/details', { course, user, isOwner, owner,hasSigned,signedUsernames });
+})
+
+router.get('/:courseId/signUp', async (req, res) => {
+    const courseId = req.params.courseId;
+    const userId = req.user._id;
+
+    try {
+        await courseManager.signUp(courseId, userId);
+        res.redirect(`/courses/${courseId}/details`);
+    } catch (err) {
+        res.render('404', { error: getErrorMessage(err) });
+    }
+});
+
 module.exports = router;
