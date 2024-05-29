@@ -7,6 +7,8 @@ exports.getAll = () => Course.find().populate('owner');
 
 exports.getOne = (courseId) => Course.findById(courseId).populate('owner');
 
+exports.delete = (courseId) => Course.findByIdAndDelete(courseId);
+
 exports.signUp = async (courseId, userId) => {
     const course = await Course.findById(courseId);
 
