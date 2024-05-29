@@ -78,4 +78,17 @@ router.get('/:courseId/edit', async (req, res) => {
         res.render('404', { error: getErrorMessage(err) });
     }
 });
+
+
+router.post('/:courseId/edit', async (req, res) => {
+    const courseId = req.params.courseId;
+    const courseData = req.body;
+
+    try {
+        await courseManager.edit(courseId, courseData);
+        res.redirect(`/courses/${courseId}/details`)
+    } catch (err) {
+        res.render(`/courses/${courseId}/details`, { error: getErrorMessage(err) });
+    }
+});
 module.exports = router;
