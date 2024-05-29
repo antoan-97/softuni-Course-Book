@@ -43,7 +43,7 @@ router.get('/logout', (req, res) => {
     res.redirect('/');
 })
 
-router.get('/profile', async (req, res) => {
+router.get('/profile',  async (req, res) => {
     const courses = await Course.find()
     const { user } = req;
     const owner = req.user?.email;

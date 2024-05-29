@@ -1,4 +1,5 @@
 const { getErrorMessage } = require('../utils/errorHelper');
+const { isAuth } = require('../middlewares/authMiddleware');
 const courseManager = require('../managers/courseManager');
 
 const router = require('express').Router();
@@ -10,11 +11,11 @@ router.get('/', async (req, res) => {
 })
 
 
-router.get('/create', (req, res) => {
+router.get('/create', isAuth, (req, res) => {
     res.render('courses/create');
 });
 
-router.post('/create', async (req, res) => {
+router.post('/create', isAuth, async (req, res) => {
     const courseData = {
         ...req.body,
         owner: req.user._id,
@@ -43,7 +44,7 @@ router.get('/:courseId/details', async (req, res) => {
     res.render('courses/details', { course, user, isOwner, owner, hasSigned, signedUsernames });
 })
 
-router.get('/:courseId/signUp', async (req, res) => {
+router.get('/:courseId/signUp', isAuth, async (req, res) => {
     const courseId = req.params.courseId;
     const userId = req.user._id;
 
@@ -56,7 +57,7 @@ router.get('/:courseId/signUp', async (req, res) => {
 });
 
 
-router.get('/:courseId/delete', async (req, res) => {
+router.get('/:courseId/delete', isAuth, async (req, res) => {
     const courseId = req.params.courseId;
 
     try {
@@ -68,7 +69,7 @@ router.get('/:courseId/delete', async (req, res) => {
 });
 
 
-router.get('/:courseId/edit', async (req, res) => {
+router.get('/:courseId/edit', isAuth, async (req, res) => {
     const courseId = req.params.courseId;
 
     try {
@@ -80,7 +81,7 @@ router.get('/:courseId/edit', async (req, res) => {
 });
 
 
-router.post('/:courseId/edit', async (req, res) => {
+router.post('/:courseId/edit', isAuth, async (req, res) => {
     const courseId = req.params.courseId;
     const courseData = req.body;
 
