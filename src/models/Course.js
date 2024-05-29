@@ -4,18 +4,18 @@ const courseSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
-        minxLength: [5, 'Title should be at least 5 characters!']
+        minLength: [5, 'Title should be at least 5 characters!']
     },
     type: {
         type: String,
         required: true,
-        minxLength: [3, 'Type should be at least 3 characters!']
+        minLength: [3, 'Type should be at least 3 characters!']
 
     },
     certificate: {
         type: String,
         required: true,
-        minxLength: [2, 'Certificate should be at least 2 characters!']
+        minLength: [2, 'Certificate should be at least 2 characters!']
     },
     image: {
         type: String,
@@ -25,7 +25,7 @@ const courseSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true,
-        minxLength: [10, 'Description should be at least 10 characters!']
+        minLength: [10, 'Description should be at least 10 characters!']
     },
     price: {
         type: Number,
