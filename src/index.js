@@ -33,3 +33,5 @@ app.use(routes);
 
 
 app.listen(3000, console.log('Server is listeningon port 3000'));
+
+//TODO: search why on edit validation for minLength its not working
