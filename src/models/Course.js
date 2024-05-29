@@ -4,27 +4,38 @@ const courseSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
+        minxLength: [5, 'Title should be at least 5 characters!']
     },
     type: {
         type: String,
         required: true,
+        minxLength: [3, 'Type should be at least 3 characters!']
 
     },
     certificate: {
         type: String,
         required: true,
+        minxLength: [2, 'Certificate should be at least 2 characters!']
     },
     image: {
         type: String,
         required: true,
+        match:[/^https?:\/\//, 'Invalid URL!']
     },
     description: {
         type: String,
         required: true,
+        minxLength: [10, 'Description should be at least 10 characters!']
     },
     price: {
         type: Number,
         required: true,
+        validate: {
+            validator: function(value) {
+                return value >= 0; // Ensure price is a positive number
+            },
+            message: props => `${props.value} is not a valid price. Price must be a positive number.`,
+        },
     },
     signUpList: [
         {
