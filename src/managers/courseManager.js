@@ -9,6 +9,8 @@ exports.getOne = (courseId) => Course.findById(courseId).populate('owner');
 
 exports.delete = (courseId) => Course.findByIdAndDelete(courseId);
 
+exports.edit = (courseId,courseData) => Course.findByIdAndUpdate(courseId,courseData);
+
 exports.signUp = async (courseId, userId) => {
     const course = await Course.findById(courseId);
 
