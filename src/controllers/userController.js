@@ -42,4 +42,8 @@ router.get('/logout', (req,res) =>{
     res.redirect('/');
 })
 
+router.get('/profile', async (req,res) =>{
+    res.render('users/profile')
+})
+
 module.exports = router

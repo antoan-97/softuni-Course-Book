@@ -88,7 +88,9 @@ router.post('/:courseId/edit', async (req, res) => {
         await courseManager.edit(courseId, courseData);
         res.redirect(`/courses/${courseId}/details`)
     } catch (err) {
-        res.render(`/courses/${courseId}/details`, { error: getErrorMessage(err) });
+        res.render(`courses/${courseId}/details`, { error: getErrorMessage(err) });
     }
 });
+
+
 module.exports = router;
