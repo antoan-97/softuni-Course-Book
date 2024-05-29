@@ -55,4 +55,16 @@ router.get('/:courseId/signUp', async (req, res) => {
     }
 });
 
+
+router.get('/:courseId/delete', async (req,res) =>{
+    const courseId = req.params.courseId;
+
+    try {
+        await courseManager.delete(courseId);
+        res.redirect('/courses');
+    } catch (err) {
+        res.render('courses/details', { error: getErrorMessage(err) });
+    }
+})
+
 module.exports = router;
