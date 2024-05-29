@@ -7,6 +7,10 @@ const courseController = require('./controllers/courseController');
 router.use(homeController);
 router.use('/users',userController);
 router.use('/courses',courseController);
+router.get('*', (req,res) =>{
+    res.redirect('/404')
+});
+
 
 
 module.exports = router
