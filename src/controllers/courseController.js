@@ -89,7 +89,7 @@ router.post('/:courseId/edit', isAuth, async (req, res) => {
         await courseManager.edit(courseId, courseData);
         res.redirect(`/courses/${courseId}/details`)
     } catch (err) {
-        res.render(`courses/${courseId}/details`, { error: getErrorMessage(err) });
+        res.render('courses/edit', { course: { ...courseData, _id: courseId },  error: getErrorMessage(err) });
     }
 });
 
