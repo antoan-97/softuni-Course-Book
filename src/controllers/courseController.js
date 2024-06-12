@@ -1,5 +1,5 @@
 const { getErrorMessage } = require('../utils/errorHelper');
-const { isAuth } = require('../middlewares/authMiddleware');
+const { isAuth, isOwner } = require('../middlewares/authMiddleware');
 const courseManager = require('../managers/courseManager');
 
 const router = require('express').Router();
@@ -57,7 +57,7 @@ router.get('/:courseId/signUp', isAuth, async (req, res) => {
 });
 
 
-router.get('/:courseId/delete', isAuth, async (req, res) => {
+router.get('/:courseId/delete', isAuth, isOwner, async (req, res) => {
     const courseId = req.params.courseId;
 
     try {
@@ -69,7 +69,7 @@ router.get('/:courseId/delete', isAuth, async (req, res) => {
 });
 
 
-router.get('/:courseId/edit', isAuth, async (req, res) => {
+router.get('/:courseId/edit', isAuth, isOwner, async (req, res) => {
     const courseId = req.params.courseId;
 
     try {
@@ -81,7 +81,7 @@ router.get('/:courseId/edit', isAuth, async (req, res) => {
 });
 
 
-router.post('/:courseId/edit', isAuth, async (req, res) => {
+router.post('/:courseId/edit', isAuth, isOwner, async (req, res) => {
     const courseId = req.params.courseId;
     const courseData = req.body;
 
