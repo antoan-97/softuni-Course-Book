@@ -1,5 +1,6 @@
 const jwt = require('../lib/jwt');
 const { SECRET } = require('../config/config');
+const courseManager = require('../managers/courseManager');
 
 
 exports.auth = async (req,res,next) => {
@@ -38,9 +39,9 @@ exports.isLoggedIn = (req, res, next) => {
 
 
 exports.isOwner = async (req, res, next) => {
-    const recipeId = req.params.recipeId;
-    const recipe = await recipeManager.getOne(recipeId);
-    if (!recipe || recipe.owner.toString() !== req.user._id.toString()) {
+    const courseId = req.params.courseId;
+    const course = await courseManager.getOne(recipeId);
+    if (!course || course.owner.toString() !== req.user._id.toString()) {
         return res.render('404');
     }
     next();
