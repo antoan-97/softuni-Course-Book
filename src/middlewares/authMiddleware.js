@@ -28,3 +28,20 @@ exports.isAuth = (req,res,next) =>{
     }
     next();
 };
+exports.isLoggedIn = (req, res, next) => {
+    if (req.user) {
+        // Redirect to 404 page  if user is already logged in
+        return res.render('404');
+    }
+    next();
+};
+
+
+exports.isOwner = async (req, res, next) => {
+    const recipeId = req.params.recipeId;
+    const recipe = await recipeManager.getOne(recipeId);
+    if (!recipe || recipe.owner.toString() !== req.user._id.toString()) {
+        return res.render('404');
+    }
+    next();
+};
