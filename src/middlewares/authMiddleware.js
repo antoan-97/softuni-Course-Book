@@ -37,12 +37,33 @@ exports.isLoggedIn = (req, res, next) => {
     next();
 };
 
-
 exports.isOwner = async (req, res, next) => {
-    const courseId = req.params.courseId;
-    const course = await courseManager.getOne(recipeId);
-    if (!course || course.owner.toString() !== req.user._id.toString()) {
-        return res.render('404');
+    try {
+        const courseId = req.params.courseId;
+        const course = await courseManager.getOne(courseId);
+
+        if (!course) {
+            console.log(`Course with ID ${courseId} not found`);
+            return res.render('404');
+        }
+
+        if (!req.user) {
+            console.log('User is not authenticated');
+            return res.render('404');
+        }
+
+        console.log(`Course owner: ${String(course.owner._id)}`);
+        console.log(`Authenticated user: ${String(req.user._id)}`);
+
+        if (String(course.owner._id) === String(req.user._id)) {
+            console.log(`User ${req.user._id} is the owner of course ${courseId}`);
+            return next();
+        } else {
+            console.log(`User ${req.user._id} is not the owner of course ${courseId}`);
+            return res.render('404');
+        }
+    } catch (error) {
+        console.error(`Error in isOwner middleware: ${error.message}`);
+        return res.render('404', { error: 'An error occurred while checking ownership' });
     }
-    next();
 };
